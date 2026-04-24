@@ -2,6 +2,7 @@ import { redirect } from 'next/navigation'
 import Link from 'next/link'
 import { createServerClient } from '@/lib/supabase-server'
 import FormularioAgendamento from '@/components/FormularioAgendamento'
+import SiteHeader from '@/components/SiteHeader'
 import { formatarHora, formatarDataCurta, HORA_INICIO, HORA_FIM } from '@/lib/slots'
 
 export default async function AgendarPage({
@@ -17,7 +18,6 @@ export default async function AgendarPage({
 
   if (!dataValida || !horaValida) redirect('/')
 
-  // Verifica se o slot está disponível
   const supabase = createServerClient()
   const dataHora = `${data}T${String(hora).padStart(2, '0')}:00:00`
 
@@ -35,47 +35,57 @@ export default async function AgendarPage({
 
   if (existente) {
     return (
-      <main className="min-h-screen flex items-center justify-center px-4">
-        <div className="max-w-md w-full text-center space-y-4">
-          <div className="text-4xl">😔</div>
-          <h1 className="text-xl font-semibold">Horário indisponível</h1>
-          <p className="text-muted-foreground">
-            O horário de <strong>{labelDia}</strong> às <strong>{labelHora}</strong> já foi reservado.
-          </p>
-          <Link
-            href="/"
-            className="inline-block mt-2 text-sm font-medium underline underline-offset-4"
-          >
-            Ver outros horários disponíveis
-          </Link>
-        </div>
-      </main>
+      <>
+        <SiteHeader />
+        <main className="min-h-screen flex items-center justify-center px-4">
+          <div className="max-w-md w-full text-center space-y-5">
+            <div className="inline-flex size-16 items-center justify-center rounded-full bg-destructive/10 text-2xl mx-auto">
+              😔
+            </div>
+            <div>
+              <h1 className="text-2xl font-bold tracking-tight">Horário indisponível</h1>
+              <p className="text-muted-foreground mt-2 text-sm">
+                O horário de <strong>{labelDia}</strong> às <strong>{labelHora}</strong> já foi reservado.
+              </p>
+            </div>
+            <Link
+              href="/"
+              className="inline-block text-sm font-semibold text-primary underline underline-offset-4"
+            >
+              Ver outros horários disponíveis
+            </Link>
+          </div>
+        </main>
+      </>
     )
   }
 
   return (
-    <main className="min-h-screen px-4 py-12">
-      <div className="max-w-md mx-auto space-y-8">
-        <div>
-          <Link
-            href="/"
-            className="text-sm text-muted-foreground hover:text-foreground transition-colors"
-          >
-            ← Voltar para a agenda
-          </Link>
-          <h1 className="text-2xl font-bold mt-4">Confirmar agendamento</h1>
-          <p className="text-muted-foreground text-sm mt-1">
-            Preencha seus dados para reservar o horário.
-          </p>
-        </div>
+    <>
+      <SiteHeader />
+      <main className="min-h-screen px-4 py-12">
+        <div className="max-w-md mx-auto space-y-8">
+          <div className="text-center">
+            <Link
+              href="/"
+              className="text-sm text-muted-foreground hover:text-foreground transition-colors inline-flex items-center gap-1 mb-6"
+            >
+              ← Voltar para a agenda
+            </Link>
+            <h1 className="text-3xl font-extrabold tracking-tight">Confirmar agendamento</h1>
+            <p className="text-muted-foreground text-sm mt-2">
+              Preencha seus dados para reservar o horário.
+            </p>
+          </div>
 
-        <FormularioAgendamento
-          data={data!}
-          hora={hora}
-          labelDia={labelDia}
-          labelHora={labelHora}
-        />
-      </div>
-    </main>
+          <FormularioAgendamento
+            data={data!}
+            hora={hora}
+            labelDia={labelDia}
+            labelHora={labelHora}
+          />
+        </div>
+      </main>
+    </>
   )
 }

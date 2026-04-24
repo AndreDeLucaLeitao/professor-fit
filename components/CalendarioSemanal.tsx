@@ -168,14 +168,14 @@ export default function CalendarioSemanal({
                       ocupado ? (
                         <button
                           disabled
-                          className="w-full h-full rounded text-[0.65rem] font-semibold bg-muted text-muted-foreground cursor-not-allowed"
+                          className="w-full h-full rounded-md text-[0.65rem] font-semibold text-white/90 bg-red-800 cursor-not-allowed dark:bg-red-900"
                         >
                           Ocupado
                         </button>
                       ) : (
                         <Link
                           href={`/agendar?data=${formatarData(dia)}&hora=${hora}`}
-                          className="flex w-full h-full items-center justify-center rounded text-[0.65rem] font-semibold bg-emerald-50 text-emerald-700 hover:bg-emerald-100 border border-emerald-200/70 hover:border-emerald-300 transition-colors"
+                          className="flex w-full h-full items-center justify-center rounded-md text-[0.65rem] font-semibold text-white bg-emerald-700 transition-colors hover:bg-emerald-600 dark:bg-emerald-800 dark:hover:bg-emerald-700"
                         >
                           Livre
                         </Link>
@@ -192,11 +192,11 @@ export default function CalendarioSemanal({
       {/* Legenda */}
       <div className="flex gap-4 mt-3 text-xs text-muted-foreground">
         <span className="flex items-center gap-1.5">
-          <span className="inline-block size-3 rounded bg-emerald-100 border border-emerald-300" />
+          <span className="inline-block size-3 rounded bg-emerald-700" />
           Disponível
         </span>
         <span className="flex items-center gap-1.5">
-          <span className="inline-block size-3 rounded bg-muted border border-border" />
+          <span className="inline-block size-3 rounded bg-red-800" />
           Ocupado
         </span>
       </div>

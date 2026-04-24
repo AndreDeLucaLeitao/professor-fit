@@ -1,5 +1,6 @@
 import { Suspense } from 'react'
 import CalendarioSemanal from '@/components/CalendarioSemanal'
+import SiteHeader from '@/components/SiteHeader'
 import { buscarSlotsOcupados } from '@/app/actions/agendamentos'
 import { getSegundaFeira, getDiasSemana, formatarData } from '@/lib/slots'
 
@@ -34,34 +35,42 @@ function CalendarioSkeleton() {
 
 export default function Home() {
   return (
-    <main>
-      {/* Hero */}
-      <section className="bg-gradient-to-b from-emerald-50 to-background py-16 px-4 text-center">
-        <div className="max-w-2xl mx-auto">
-          <p className="text-sm font-medium text-emerald-700 mb-3 uppercase tracking-widest">
-            Educação Física Personalizada
-          </p>
-          <h1 className="text-4xl font-bold tracking-tight mb-4 text-foreground">
-            Agende sua aula particular
-          </h1>
-          <p className="text-lg text-muted-foreground mb-1">
-            Escolha o horário que preferir diretamente pela agenda.
-          </p>
-          <p className="text-sm text-muted-foreground">
-            Segunda a sexta · 7h às 20h · Aulas de 1 hora
-          </p>
-        </div>
-      </section>
+    <>
+      <SiteHeader />
+      <main>
+        {/* Hero */}
+        <section className="bg-gradient-to-b from-amber-50/60 to-background py-20 px-4 text-center border-b border-border">
+          <div className="max-w-2xl mx-auto">
+            <span className="inline-flex items-center rounded-full border border-primary/30 bg-primary/10 px-4 py-1.5 text-xs font-semibold text-red-900 uppercase tracking-widest mb-6">
+              Educação Física Personalizada
+            </span>
+            <h1 className="text-5xl font-extrabold tracking-tight mb-5 text-foreground">
+              Agende sua aula<br className="hidden sm:block" /> particular
+            </h1>
+            <p className="text-lg text-muted-foreground mb-2">
+              Escolha o horário que preferir diretamente pela agenda.
+            </p>
+            <p className="text-sm text-muted-foreground/70">
+              Segunda a sexta · 7h às 20h · Aulas de 1 hora
+            </p>
+          </div>
+        </section>
 
-      {/* Calendário */}
-      <section className="py-12 px-4">
-        <div className="max-w-4xl mx-auto">
-          <h2 className="text-xl font-semibold mb-6">Horários disponíveis</h2>
-          <Suspense fallback={<CalendarioSkeleton />}>
-            <CalendarioComDados />
-          </Suspense>
-        </div>
-      </section>
-    </main>
+        {/* Calendário */}
+        <section className="py-14 px-4">
+          <div className="max-w-4xl mx-auto">
+            <div className="text-center mb-8">
+              <h2 className="text-2xl font-bold tracking-tight">Horários disponíveis</h2>
+              <p className="text-sm text-muted-foreground mt-1">
+                Selecione um slot livre para confirmar sua aula
+              </p>
+            </div>
+            <Suspense fallback={<CalendarioSkeleton />}>
+              <CalendarioComDados />
+            </Suspense>
+          </div>
+        </section>
+      </main>
+    </>
   )
 }
