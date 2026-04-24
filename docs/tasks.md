@@ -8,35 +8,36 @@
 - [x] Criar projeto Next.js 15 com TypeScript (instalado v16.2.4 — latest)
 - [x] Configurar Tailwind CSS (v4)
 - [x] Instalar e configurar shadcn/ui (Radix + Nova preset)
-- [ ] Criar repositório no GitHub
-- [ ] Configurar projeto no Supabase
-- [ ] Criar tabela `agendamentos` no Supabase
-- [ ] Configurar variáveis de ambiente (`.env.local`) — template em `.env.local.example`
-- [ ] Deploy inicial na Vercel (projeto vazio)
+- [x] Criar repositório no GitHub
+- [x] Instalar `@supabase/supabase-js` e criar `lib/supabase.ts` (client) e `lib/supabase-server.ts` (server)
+- [x] Configurar projeto no Supabase
+- [x] Criar tabela `agendamentos` no Supabase
+- [x] Configurar variáveis de ambiente (`.env.local`)
+- [x] Deploy inicial na Vercel (projeto vazio)
 
 ## Fase 2 — Agendamento público (aluno)
-- [ ] Página inicial com apresentação do professor
-- [ ] Componente de calendário semanal (seg–sex)
-- [ ] Lógica de geração dos slots (7h–20h, 1h cada)
-- [ ] Buscar slots ocupados do Supabase e bloquear na UI
-- [ ] Formulário de agendamento (nome + telefone)
-- [ ] Validação dos campos do formulário
-- [ ] Gerar `cancel_token` único ao agendar
-- [ ] Salvar agendamento no Supabase
-- [ ] Página de confirmação com link de cancelamento
-- [ ] Página de cancelamento (`/cancelar/[token]`)
-- [ ] Lógica de cancelamento (marcar como cancelado + liberar slot)
+- [x] Página inicial com apresentação do professor
+- [x] Componente de calendário semanal (seg–sex)
+- [x] Lógica de geração dos slots (7h–20h, 1h cada)
+- [x] Buscar slots ocupados do Supabase e bloquear na UI
+- [x] Formulário de agendamento (nome + telefone)
+- [x] Validação dos campos do formulário
+- [x] Gerar `cancel_token` único ao agendar
+- [x] Salvar agendamento no Supabase
+- [x] Página de confirmação com link de cancelamento
+- [x] Página de cancelamento (`/cancelar/[token]`)
+- [x] Lógica de cancelamento (marcar como cancelado + liberar slot)
 
 ## Fase 3 — Painel Admin
-- [ ] Configurar NextAuth.js v5
-- [ ] Criar credenciais do admin no Supabase ou `.env`
-- [ ] Página de login do admin (`/admin/login`)
-- [ ] Proteger todas as rotas `/admin/*`
-- [ ] Página principal do admin: agenda semanal
-- [ ] Visualizar agendamentos com nome e WhatsApp do aluno
-- [ ] Criar agendamento manualmente pelo admin
-- [ ] Editar agendamento existente
-- [ ] Excluir/cancelar agendamento
+- [x] Auth customizada (sem NextAuth — single admin via env vars + HMAC session cookie)
+- [x] Criar credenciais do admin no `.env`
+- [x] Página de login do admin (`/admin/login`)
+- [x] Proteger todas as rotas `/admin/*` (proxy.ts + layout server-side)
+- [x] Página principal do admin: agenda semanal
+- [x] Visualizar agendamentos com nome e WhatsApp do aluno
+- [x] Criar agendamento manualmente pelo admin
+- [x] Editar agendamento existente
+- [x] Excluir/cancelar agendamento
 
 ## Fase 4 — Qualidade e finalização
 - [ ] Responsividade mobile em todas as páginas
