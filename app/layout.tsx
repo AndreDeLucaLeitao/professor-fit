@@ -10,7 +10,7 @@ const outfit = Outfit({
 });
 
 export const metadata: Metadata = {
-  title: "Professor Fit — Agende sua aula particular",
+  title: "Cerboni — Agende sua aula particular",
   description: "Agende sua aula particular de educação física. Escolha o horário disponível e confirme em segundos.",
 };
 

@@ -39,12 +39,12 @@ export default function Home() {
       <SiteHeader />
       <main>
         {/* Hero */}
-        <section className="bg-gradient-to-b from-amber-50/60 to-background py-20 px-4 text-center border-b border-border">
+        <section className="bg-gradient-to-b from-amber-50/60 to-background py-12 sm:py-20 px-4 text-center border-b border-border">
           <div className="max-w-2xl mx-auto">
-            <span className="inline-flex items-center rounded-full border border-primary/30 bg-primary/10 px-4 py-1.5 text-xs font-semibold text-red-900 uppercase tracking-widest mb-6">
+            <span className="inline-flex items-center rounded-full border border-primary/30 bg-primary/10 px-3 py-1.5 text-xs font-semibold text-red-900 uppercase tracking-widest mb-6">
               Educação Física Personalizada
             </span>
-            <h1 className="text-5xl font-extrabold tracking-tight mb-5 text-foreground">
+            <h1 className="text-4xl sm:text-5xl font-extrabold tracking-tight mb-5 text-foreground">
               Agende sua aula<br className="hidden sm:block" /> particular
             </h1>
             <p className="text-lg text-muted-foreground mb-2">

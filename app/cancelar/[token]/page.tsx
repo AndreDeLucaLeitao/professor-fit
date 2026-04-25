@@ -2,7 +2,7 @@ import { notFound } from 'next/navigation'
 import Link from 'next/link'
 import { buscarAgendamentoPorToken, cancelarAgendamento } from '@/app/actions/agendamentos'
 import { formatarDataCurta, formatarHora } from '@/lib/slots'
-import { Button } from '@/components/ui/button'
+import SubmitButton from '@/components/SubmitButton'
 import SiteHeader from '@/components/SiteHeader'
 
 export default async function CancelarPage({
@@ -89,9 +89,9 @@ export default async function CancelarPage({
           {/* Ações */}
           <div className="flex flex-col gap-3 sm:flex-row-reverse">
             <form action={confirmarCancelamento} className="w-full sm:flex-1">
-              <Button type="submit" variant="destructive" size="lg" className="w-full">
+              <SubmitButton variant="destructive" size="lg" className="w-full" pendingLabel="Cancelando…">
                 Sim, cancelar agendamento
-              </Button>
+              </SubmitButton>
             </form>
             <Link
               href="/"

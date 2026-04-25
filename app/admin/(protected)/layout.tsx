@@ -13,7 +13,7 @@ export default async function AdminProtectedLayout({
   return (
     <div className="min-h-screen flex flex-col">
       <header className="border-b border-border px-4 py-3 flex items-center justify-between">
-        <span className="font-semibold text-sm">Professor Fit — Admin</span>
+        <span className="font-semibold text-sm">Cerboni — Admin</span>
         <form action={logout}>
           <Button type="submit" variant="ghost" size="sm">
             Sair

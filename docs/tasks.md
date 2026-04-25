@@ -40,12 +40,18 @@
 - [x] Excluir/cancelar agendamento
 
 ## Fase 4 — Qualidade e finalização
-- [ ] Responsividade mobile em todas as páginas
-- [ ] Tratamento de erros (slot já ocupado, token inválido, etc.)
-- [ ] Loading states nas ações assíncronas
-- [ ] Revisão visual geral
+- [x] Responsividade mobile em todas as páginas
+- [x] Tratamento de erros (slot já ocupado, token inválido, etc.)
+- [x] Loading states nas ações assíncronas
+- [x] Revisão visual geral
 - [ ] Testes manuais do fluxo completo
 - [ ] Configurar domínio personalizado na Vercel (se houver)
+
+## Feature extra — Bloqueio de horários
+- [x] Admin pode bloquear slot livre pelo cadeado na grade
+- [x] Admin pode desbloquear clicando no slot bloqueado
+- [x] Slot bloqueado aparece como "Ocupado" para alunos
+- [x] Atualizações otimistas (sem afetar outras células)
 
 ## Fase 5 — Futuro (não implementar agora)
 - [ ] Integração com Google Calendar

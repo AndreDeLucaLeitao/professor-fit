@@ -105,3 +105,45 @@ export async function excluirAgendamento(id: string): Promise<void> {
 
   redirect('/admin')
 }
+
+export async function bloquearSlot(
+  data: string,
+  hora: number
+): Promise<{ erro?: string }> {
+  await requireAdmin()
+
+  const supabase = createServerClient()
+  const dataHora = `${data}T${String(hora).padStart(2, '0')}:00:00`
+
+  const { data: existente } = await supabase
+    .from('agendamentos')
+    .select('id')
+    .eq('data_hora', dataHora)
+    .eq('cancelado', false)
+    .maybeSingle()
+
+  if (existente) return { erro: 'Horário já ocupado.' }
+
+  const { error } = await supabase.from('agendamentos').insert({
+    data_hora: dataHora,
+    nome_aluno: '(Bloqueado)',
+    telefone: '',
+    cancel_token: crypto.randomUUID(),
+    cancelado: false,
+  })
+
+  if (error) return { erro: 'Erro ao bloquear horário.' }
+  return {}
+}
+
+export async function desbloquearSlot(id: string): Promise<void> {
+  await requireAdmin()
+
+  const supabase = createServerClient()
+  // Segurança: só cancela registros com telefone vazio (bloqueios, não agendamentos reais)
+  await supabase
+    .from('agendamentos')
+    .update({ cancelado: true })
+    .eq('id', id)
+    .eq('telefone', '')
+}
